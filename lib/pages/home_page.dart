@@ -1,4 +1,6 @@
 import 'package:bloc_train/bloc/counter.dart';
+import 'package:bloc_train/bloc/theme.dart';
+import 'package:bloc_train/pages/second_page.dart';
 import 'package:bloc_train/pages/text_counter.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -22,20 +24,26 @@ class HomePage extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: const Text('Latihan BLOC'),
+        actions: [
+          IconButton(
+            onPressed: () => context.read<ThemeCubit>().changeTheme(),
+            icon: const Icon(Icons.sunny),
+          ),
+        ],
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
-          // Navigator.push(
-          //   context,
-          //   MaterialPageRoute(
-          //     builder: (context) => BlocProvider.value(
-          //       value: counter,
-          //       child: const SecondPage(),
-          //     ),
-          //   ),
-          // );
+          Navigator.push(
+            context,
+            MaterialPageRoute(
+              builder: (context) => BlocProvider.value(
+                value: counter,
+                child: const SecondPage(),
+              ),
+            ),
+          );
 
-          Navigator.pushNamed(context, '/second');
+          // Navigator.pushNamed(context, '/second');
         },
         child: const Icon(Icons.arrow_forward),
       ),
