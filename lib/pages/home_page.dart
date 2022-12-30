@@ -1,5 +1,4 @@
 import 'package:bloc_train/bloc/counter.dart';
-import 'package:bloc_train/pages/second_page.dart';
 import 'package:bloc_train/pages/text_counter.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -25,15 +24,19 @@ class HomePage extends StatelessWidget {
         title: const Text('Latihan BLOC'),
       ),
       floatingActionButton: FloatingActionButton(
-        onPressed: () => Navigator.push(
-          context,
-          MaterialPageRoute(
-            builder: (context) => BlocProvider.value(
-              value: counter,
-              child: const SecondPage(),
-            ),
-          ),
-        ),
+        onPressed: () {
+          // Navigator.push(
+          //   context,
+          //   MaterialPageRoute(
+          //     builder: (context) => BlocProvider.value(
+          //       value: counter,
+          //       child: const SecondPage(),
+          //     ),
+          //   ),
+          // );
+
+          Navigator.pushNamed(context, '/second');
+        },
         child: const Icon(Icons.arrow_forward),
       ),
       body: Column(
