@@ -1,5 +1,6 @@
 import 'package:bloc_train/bloc/counter.dart';
 import 'package:bloc_train/bloc/theme.dart';
+import 'package:bloc_train/pages/form_page.dart';
 import 'package:bloc_train/pages/second_page.dart';
 import 'package:bloc_train/pages/text_counter.dart';
 import 'package:flutter/material.dart';
@@ -25,6 +26,15 @@ class HomePage extends StatelessWidget {
       appBar: AppBar(
         title: const Text('Latihan BLOC'),
         actions: [
+          IconButton(
+            onPressed: () => Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) => const FormPage(),
+              ),
+            ),
+            icon: const Icon(Icons.input),
+          ),
           IconButton(
             onPressed: () => context.read<ThemeCubit>().changeTheme(),
             icon: const Icon(Icons.sunny),

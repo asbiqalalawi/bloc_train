@@ -1,5 +1,6 @@
 import 'package:bloc_train/bloc/counter.dart';
 import 'package:bloc_train/bloc/theme.dart';
+import 'package:bloc_train/bloc/user_cubit.dart';
 import 'package:bloc_train/pages/home_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -22,6 +23,9 @@ class MyApp extends StatelessWidget {
         ),
         BlocProvider(
           create: (context) => ThemeCubit(),
+        ),
+        BlocProvider(
+          create: (context) => UserCubit(),
         ),
       ],
       child: const App(),
