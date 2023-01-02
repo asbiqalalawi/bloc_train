@@ -10,7 +10,20 @@ class FormPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    // Extension Method
+    // 1. context.read()
+    // 2. context.watch()
+    // 1. context.select()
+
+    /*read will be called once 
+     watch follow the context to rebuild when changes are made
+     select same as watch but specific column
+     */
+
     var userCubit = context.read<UserCubit>();
+    // var userCubitWatch = context.watch<UserCubit>();
+
+    log('Build Scaffold');
 
     return Scaffold(
       appBar: AppBar(
@@ -34,6 +47,22 @@ class FormPage extends StatelessWidget {
                 log('Change Age');
                 return Text('Age    : ' + state.toString());
               }),
+          // Same #####################################################################
+          const Divider(),
+          Builder(
+            builder: (context) {
+              log('Change Name Watch');
+              var watchUser = context.select<UserCubit, String>((value) => value.state.name);
+              return Text('Name    : ' + watchUser);
+            },
+          ),
+          Builder(
+            builder: (context) {
+              log('Change Age Watch');
+              var watchUser = context.select<UserCubit, int>((value) => value.state.age);
+              return Text('Age    : ' + watchUser.toString());
+            },
+          ),
           TextFormField(
             onChanged: (value) => userCubit.changeName(value),
           ),
